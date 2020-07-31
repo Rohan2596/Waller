@@ -32,4 +32,14 @@
         android:hint="Search"
         android:drawableLeft="@drawable/ic_search"
         android:drawablePadding="1dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/category_recyclerView"
+        android:scrollbars="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"  />
+
+
 </LinearLayout>
