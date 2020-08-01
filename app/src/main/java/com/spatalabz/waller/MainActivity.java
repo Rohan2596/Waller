@@ -1,10 +1,12 @@
 package com.spatalabz.waller;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -13,11 +15,14 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.spatalabz.waller.adapter.CategoryAdapter;
+import com.spatalabz.waller.adapter.PhotosAdapter;
 import com.spatalabz.waller.apiRequest.ApiClient;
 import com.spatalabz.waller.apiRequest.PhotosApi;
 import com.spatalabz.waller.model.Category;
 import com.spatalabz.waller.model.api.Photo;
 import com.spatalabz.waller.model.api.Photos;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView category_RecyclerView;
     LinearLayoutManager category_horizontalLayout;
-    Photo photo;
-
+    Photo photo ;
+    List<Photo> photoList;
+    RecyclerView photos_RecyclerView;
+    GridLayoutManager photos_GridLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
         category_horizontalLayout = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         category_RecyclerView.setLayoutManager(category_horizontalLayout);
         category_RecyclerView.setAdapter(new CategoryAdapter(categories,getApplicationContext()));
+        loadPhotos();
 
-           loadPhotos();
 
     }
 
@@ -71,8 +78,14 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Photos> call, Response<Photos> response) {
                 if (response.isSuccessful()){
                     Photos photos=response.body();
+                    photoList=response.body().getPhotos();
                     Toast.makeText(MainActivity.this,"photos"+ photos.getPer_page(),Toast.LENGTH_SHORT).show();
                     Log.i("Photograopher ",response.body().toString());
+
+                    photos_RecyclerView=findViewById(R.id.photos_recyclerView);
+                    photos_GridLayout= new GridLayoutManager(MainActivity.this, 2, GridLayoutManager.VERTICAL, false);
+                    photos_RecyclerView.setLayoutManager(photos_GridLayout);
+                    photos_RecyclerView.setAdapter(new PhotosAdapter(photoList,getApplicationContext()));
                 }
             }
 
