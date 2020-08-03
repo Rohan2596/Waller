@@ -11,14 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.spatalabz.waller.MainActivity;
 import com.spatalabz.waller.R;
+import com.spatalabz.waller.enums.ApiConstant;
 import com.spatalabz.waller.model.Category;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder>{
 
     private Context context;
     private Category[] categories;
+
 
     public CategoryAdapter(Category[] categories,Context context) {
         this.categories=categories;
@@ -42,6 +43,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             @Override
             public void onClick(View view) {
                 Toast.makeText(context,"Category Selected:- " +categories[position].category_title,Toast.LENGTH_SHORT).show();
+                ApiConstant.SEARCH_QUERY.message=categories[position].category_title;
+
             }
         });
 

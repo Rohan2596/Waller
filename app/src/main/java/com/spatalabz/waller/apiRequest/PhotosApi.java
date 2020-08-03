@@ -17,4 +17,12 @@ public interface PhotosApi {
             @Query("page") int page,
             @Query("per_page") int perPage
     );
+
+    @GET("search")
+    Call<Photos> search(
+            @Header("Authorization") String authorization,
+            @Query("query") String query,
+            @Query("per_page") int perPage
+
+    );
 }
