@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.Manifest;
 import android.content.Context;
@@ -35,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
     Photo photo ;
     List<Photo> photoList;
     RecyclerView photos_RecyclerView;
-    GridLayoutManager photos_GridLayout;
+    StaggeredGridLayoutManager photos_GridLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.i("Photograopher ",response.body().toString());
 
                     photos_RecyclerView=findViewById(R.id.photos_recyclerView);
-                    photos_GridLayout= new GridLayoutManager(MainActivity.this, 2, GridLayoutManager.VERTICAL, false);
+                    photos_GridLayout=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
                     photos_RecyclerView.setLayoutManager(photos_GridLayout);
                     photos_RecyclerView.setAdapter(new PhotosAdapter(photoList,getApplicationContext()));
                 }

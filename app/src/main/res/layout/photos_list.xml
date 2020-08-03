@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.makeramen.roundedimageview.RoundedImageView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/wallerpaper"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:layout_height="wrap_content"
+    app:riv_corner_radius="12dp"
+    android:layout_marginStart="15dp"
+    android:adjustViewBounds="false"
+    android:layout_marginBottom="15dp"
+    android:layout_marginLeft="15dp">
 
-
-    <TextView
-        android:id="@+id/photographer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-</LinearLayout>
+</com.makeramen.roundedimageview.RoundedImageView>

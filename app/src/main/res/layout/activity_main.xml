@@ -44,8 +44,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/photos_recyclerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:scrollbars="vertical"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+
+        android:clipToPadding="false"
+        android:paddingBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 
 
 </LinearLayout>

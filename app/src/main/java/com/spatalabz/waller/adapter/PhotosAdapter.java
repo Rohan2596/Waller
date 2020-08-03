@@ -4,12 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.spatalabz.waller.R;
 import com.spatalabz.waller.model.api.Photo;
 import com.spatalabz.waller.model.api.Photos;
@@ -38,7 +40,10 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.photographer.setText(photos.get(position).getPhotographer());
+//        holder.photographer.setText(photos.get(position).getPhotographer());
+        Glide.with(holder.itemView.getContext())
+                .load(photos.get(position).getSrc().getPortrait())
+                .into(holder.wallpaper);
     }
 
     @Override
@@ -49,12 +54,13 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView photographer;
+        ImageView wallpaper;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.photographer=itemView.findViewById(R.id.photographer);
-
+//            this.photographer=itemView.findViewById(R.id.photographer);
+            this.wallpaper=itemView.findViewById(R.id.wallerpaper);
         }
     }
 }
