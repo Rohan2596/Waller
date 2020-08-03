@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         Call<Photos> call=photosApi.popular(
                 "563492ad6f91700001000001db74f1b0e3e744bab29c433580253e36",
                 1,
-                30
+                80
         );
         call.enqueue(new Callback<Photos>() {
             @Override
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     Photos photos=response.body();
                     photoList=response.body().getPhotos();
-                    Toast.makeText(MainActivity.this,"photos"+ photos.getPer_page(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"Wallpaper:- "+ photos.getPer_page(),Toast.LENGTH_SHORT).show();
                     Log.i("Photograopher ",response.body().toString());
 
                     photos_RecyclerView=findViewById(R.id.photos_recyclerView);
