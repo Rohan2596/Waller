@@ -25,7 +25,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements CategoryAdapter.onCategoryListener {
+public class MainActivity extends AppCompatActivity implements CategoryAdapter.onCategoryListener, PhotosAdapter.onPhotoClickListener {
 
     RecyclerView category_RecyclerView;
     LinearLayoutManager category_horizontalLayout;
@@ -45,11 +45,11 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.o
                 new Category("Cars"),
                 new Category("Bikes"),
                 new Category("Sports"),
-                new Category("Food"),
+                new Category("Brands"),
                 new Category("Animals"),
                 new Category("Flowers"),
                 new Category("Friends"),
-                new Category("Avengers"),
+                new Category("City"),
                 new Category("Technology"),
                 new Category("Science")
 
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.o
                     photos_RecyclerView = findViewById(R.id.photos_recyclerView);
                     photos_GridLayout = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                     photos_RecyclerView.setLayoutManager(photos_GridLayout);
-                    photosAdapter = new PhotosAdapter(photoList, getApplicationContext());
+                    photosAdapter = new PhotosAdapter(photoList, getApplicationContext(), MainActivity.this::onPhotoClickListener);
                     photos_RecyclerView.setAdapter(photosAdapter);
                     photosAdapter.notifyDataSetChanged();
 
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.o
         Call<Photos> call = photosApi.search(
                 "563492ad6f91700001000001db74f1b0e3e744bab29c433580253e36",
                 query,
-                10
+                80
         );
 
 
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.o
                     photos_RecyclerView = findViewById(R.id.photos_recyclerView);
                     photos_GridLayout = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                     photos_RecyclerView.setLayoutManager(photos_GridLayout);
-                    photosAdapter = new PhotosAdapter(photoList, getApplicationContext());
+                    photosAdapter = new PhotosAdapter(photoList, getApplicationContext(), MainActivity.this::onPhotoClickListener);
                     photos_RecyclerView.setAdapter(photosAdapter);
                     photosAdapter.notifyDataSetChanged();
 
@@ -141,5 +141,12 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.o
 
             }
         });
+    }
+
+    @Override
+    public void onPhotoClickListener(int position) {
+        String ph = photoList.get(position).getPhotographer();
+        Toast.makeText(this.getApplicationContext(), ph, Toast.LENGTH_SHORT).show();
+
     }
 }
