@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -147,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.o
     public void onPhotoClickListener(int position) {
         String ph = photoList.get(position).getPhotographer();
         Toast.makeText(this.getApplicationContext(), ph, Toast.LENGTH_SHORT).show();
-
+        Intent toWaller=new Intent(MainActivity.this,WallpaperActivity.class);
+        startActivity(toWaller);
     }
 }
