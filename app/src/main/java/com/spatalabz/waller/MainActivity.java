@@ -149,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.o
         String ph = photoList.get(position).getPhotographer();
         Toast.makeText(this.getApplicationContext(), ph, Toast.LENGTH_SHORT).show();
         Intent toWaller=new Intent(MainActivity.this,WallpaperActivity.class);
+        toWaller.putExtra("Wallpaper",photoList.get(position).getSrc().getPortrait());
         startActivity(toWaller);
     }
 }
