@@ -43,16 +43,13 @@ public class WallpaperActivity extends AppCompatActivity {
         wall.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
         wall.setAdjustViewBounds(false);
         wall.setScaleType(ImageView.ScaleType.FIT_XY);
-        System.out.println("WallPaper" + imageUrl);
-        Glide.with(this)
-                .load(getIntent.getStringExtra("Wallpaper"))
+        Picasso.with(this)
+                .load(imageUrl)
                 .into(wall);
-
         Button button = findViewById(R.id.wallerSetButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(WallpaperActivity.this, "Button Clicked", Toast.LENGTH_SHORT).show();
                 setWallpaper();
             }
         });
