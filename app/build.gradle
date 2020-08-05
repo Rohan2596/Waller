@@ -48,7 +48,8 @@ dependencies {
 
     //image
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-    implementation 'com.makeramen:roundedimageview:2.3.0'// https://mvnrepository.com/artifact/com.squareup.picasso/picasso
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+    // https://mvnrepository.com/artifact/com.squareup.picasso/picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
 

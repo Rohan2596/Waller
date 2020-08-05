@@ -76,32 +76,7 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.o
                 800
         );
 
-        call.enqueue(new Callback<Photos>() {
-            @Override
-            public void onResponse(Call<Photos> call, Response<Photos> response) {
-                if (response.isSuccessful()) {
-                    Photos photos = response.body();
-                    photoList = response.body().getPhotos();
-                    Toast.makeText(MainActivity.this, "Wallpaper:- " + photos.getPer_page(), Toast.LENGTH_SHORT).show();
-                    Log.i("Photograopher ", response.body().toString());
-
-                    photos_RecyclerView = findViewById(R.id.photos_recyclerView);
-                    photos_GridLayout = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-                    photos_RecyclerView.setLayoutManager(photos_GridLayout);
-                    photosAdapter = new PhotosAdapter(photoList, getApplicationContext(), MainActivity.this::onPhotoClickListener);
-                    photos_RecyclerView.setAdapter(photosAdapter);
-                    photosAdapter.notifyDataSetChanged();
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Photos> call, Throwable t) {
-                Log.i("Photograopher ", "EROROROR");
-
-            }
-        });
-
+        callResponse(call);
 
     }
 
@@ -115,8 +90,17 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.o
                 query,
                 80
         );
+        callResponse(call);
+    }
 
+    @Override
+    public void onPhotoClickListener(int position) {
+        Intent toWaller = new Intent(MainActivity.this, WallpaperActivity.class);
+        toWaller.putExtra("Wallpaper", photoList.get(position).getSrc().getPortrait());
+        startActivity(toWaller);
+    }
 
+    private void callResponse(Call<Photos> call) {
         call.enqueue(new Callback<Photos>() {
             @Override
             public void onResponse(Call<Photos> call, Response<Photos> response) {
@@ -142,12 +126,5 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.o
 
             }
         });
-    }
-
-    @Override
-    public void onPhotoClickListener(int position) {
-        Intent toWaller=new Intent(MainActivity.this,WallpaperActivity.class);
-        toWaller.putExtra("Wallpaper",photoList.get(position).getSrc().getPortrait());
-        startActivity(toWaller);
     }
 }

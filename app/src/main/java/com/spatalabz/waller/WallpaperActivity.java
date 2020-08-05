@@ -60,7 +60,7 @@ public class WallpaperActivity extends AppCompatActivity {
 
     private void setWallpaper() {
 
-        Picasso.with(this).load(imageUrl).into(new Target(){
+        Picasso.with(this).load(imageUrl).into(new Target() {
 
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
