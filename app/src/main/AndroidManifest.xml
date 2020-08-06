@@ -3,7 +3,6 @@
     package="com.spatalabz.waller">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
     <application
@@ -13,14 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WallpaperActivity" android:parentActivityName=".MainActivity">
-        </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".WallpaperActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".MainActivity">
+
         </activity>
     </application>
 
