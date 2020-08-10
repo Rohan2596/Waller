@@ -5,17 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.spatalabz.waller.R;
 import com.spatalabz.waller.model.api.Photo;
-
-
 import java.util.List;
+
+
+/*
+ * Author : Rohan Kadam
+ * Purpose: Photos Adapter is used for displaying some popular wallpaper.
+ *          Using ViewHolder and Recycler view
+ *          onPhotoClickListener is used for Click events
+ * */
+
 
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder> {
 

@@ -27,6 +27,12 @@ import com.squareup.picasso.Target;
 
 import java.io.IOException;
 
+
+/*
+ * Author : Rohan Kadam.
+ * Purpose: Activity used for displaying Wallpaper in potrait mode.
+ *          It also consist of various features for setting wallpaper.
+ * */
 public class WallpaperActivity extends AppCompatActivity {
 
     String imageUrl;

@@ -1,10 +1,13 @@
 package com.spatalabz.waller.apiRequest;
 
-import com.google.gson.Gson;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/*
+* Author : Rohan Kadam.
+* Purpose: Creating an retrofit client using baseUrl.
+* */
 public class ApiClient {
 
 

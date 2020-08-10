@@ -1,12 +1,10 @@
 package com.spatalabz.waller.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -14,6 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.spatalabz.waller.R;
 import com.spatalabz.waller.model.Category;
+
+
+/*
+* Author : Rohan Kadam
+* Purpose: Category Adapter is used for storing some popular wallpaper category.
+*          Using ViewHolder and Recycler view
+*          onCategoryListener is used for Click events
+* */
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
@@ -47,6 +53,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     @Override
     public int getItemCount() {
+
         return categories.length;
     }
 

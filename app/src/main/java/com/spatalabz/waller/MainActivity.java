@@ -29,6 +29,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
+/*
+* Author : Rohan Kadam.
+* Purpose: Activity used for displaying Category ,Edittext, photos
+*          It also consist of various features for handling events.
+* */
+
 public class MainActivity extends AppCompatActivity implements CategoryAdapter.onCategoryListener, PhotosAdapter.onPhotoClickListener {
 
     RecyclerView category_RecyclerView;

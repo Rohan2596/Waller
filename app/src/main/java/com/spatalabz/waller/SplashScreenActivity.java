@@ -6,6 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+
+
+/*
+ * Author : Rohan Kadam.
+ * Purpose: Activity used for Splash Activity
+ *          Using handler to control screen.
+ * */
 public class SplashScreenActivity extends AppCompatActivity {
 
     Handler handler;
