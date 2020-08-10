@@ -10,6 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.spatalabz.waller.adapter.CategoryAdapter;
@@ -35,12 +38,31 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.o
     StaggeredGridLayoutManager photos_GridLayout;
     PhotosAdapter photosAdapter;
     Category[] categories;
+    EditText search_text;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        search_text=findViewById(R.id.search_text);
+
+           search_text.setOnKeyListener(new View.OnKeyListener() {
+               @Override
+               public boolean onKey(View view, int i, KeyEvent keyEvent) {
+
+                   if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) &&
+                           (i == KeyEvent.KEYCODE_ENTER)) {
+                       // Perform action on key press
+                       Toast.makeText(MainActivity.this, search_text.getText(), Toast.LENGTH_SHORT).show();
+                       onSearchCall(search_text.getText().toString());
+                       return true;
+                   }
+                   return false;
+               }
+           });
         categories = new Category[]{
                 new Category("Nature"),
                 new Category("Cars"),
@@ -81,9 +103,7 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.o
     }
 
 
-    @Override
-    public void onCategoryClick(int position) {
-        String query = categories[position].category_title;
+    public void onSearchCall(String query){
         PhotosApi photosApi = ApiClient.getClient().create(PhotosApi.class);
         Call<Photos> call = photosApi.search(
                 "563492ad6f91700001000001db74f1b0e3e744bab29c433580253e36",
@@ -91,6 +111,12 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.o
                 80
         );
         callResponse(call);
+    }
+
+    @Override
+    public void onCategoryClick(int position) {
+        String query = categories[position].category_title;
+        onSearchCall(query);
     }
 
     @Override
